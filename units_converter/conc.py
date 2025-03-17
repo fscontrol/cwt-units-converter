@@ -11,24 +11,24 @@ class Ion:
 
 class IonConcentration(Unit):
     ions = {
-        "Na": Ion(name="Na", charge=1, molar_mass=22.99),
-        "Cl": Ion(name="Cl", charge=-1, molar_mass=35.45),
-        "Ca": Ion(name="Ca", charge=2, molar_mass=40.08),
-        "Mg": Ion(name="Mg", charge=2, molar_mass=24.31),
-        "SO4": Ion(name="SO4", charge=-2, molar_mass=96.06),
-        "HCO3": Ion(name="HCO3", charge=-1, molar_mass=61.02),
-        "Cl": Ion(name="Cl", charge=-1, molar_mass=35.45),
-        "Fe": Ion(name="Fe", charge=2, molar_mass=55.85),
-        "Mn": Ion(name="Mn", charge=2, molar_mass=54.94),
-        "Zn": Ion(name="Zn", charge=2, molar_mass=65.39),
-        "Cu": Ion(name="Cu", charge=2, molar_mass=63.55),
-        "Pb": Ion(name="Pb", charge=2, molar_mass=207.2),
-        "Cr": Ion(name="Cr", charge=3, molar_mass=52.00),
-        "Ni": Ion(name="Ni", charge=2, molar_mass=58.69),
-        "Al": Ion(name="Al", charge=3, molar_mass=26.98),
-        "Alk": Ion(name="Alk", charge=-1, molar_mass=61.02),
-        "Hrd": Ion(name="Hrd", charge=2, molar_mass=40),
-        "PO4": Ion(name="PO4", charge=-3, molar_mass=94.97),
+        "na": Ion(name="na", charge=1, molar_mass=22.99),
+        "cl": Ion(name="cl", charge=-1, molar_mass=35.45),
+        "ca": Ion(name="ca", charge=2, molar_mass=40.08),
+        "mg": Ion(name="mg", charge=2, molar_mass=24.31),
+        "so4": Ion(name="so4", charge=-2, molar_mass=96.06),
+        "hco3": Ion(name="hco3", charge=-1, molar_mass=61.02),
+        "fe": Ion(name="fe", charge=2, molar_mass=55.85),
+        "mn": Ion(name="mn", charge=2, molar_mass=54.94),
+        "zn": Ion(name="zn", charge=2, molar_mass=65.39),
+        "cu": Ion(name="cu", charge=2, molar_mass=63.55),
+        "pb": Ion(name="pb", charge=2, molar_mass=207.2),
+        "cr": Ion(name="cr", charge=3, molar_mass=52.00),
+        "ni": Ion(name="ni", charge=2, molar_mass=58.69),
+        "al": Ion(name="al", charge=3, molar_mass=26.98),
+        "alk": Ion(name="alk", charge=-1, molar_mass=61.02),
+        "hrd": Ion(name="hrd", charge=2, molar_mass=40),
+        "po4": Ion(name="po4", charge=-3, molar_mass=94.97),
+        "sio2": Ion(name="sio2", charge=-2, molar_mass=60.08),
     }
     default_unit = "caco3"
     _conversion_factors = {
@@ -48,17 +48,17 @@ class IonConcentration(Unit):
             "meq": ConverstionFactor(50, 0)
         }
     def __add__(self, other: "IonConcentration") -> "IonConcentration":
-        if self.ion.name != other.ion.name:
-            raise ValueError(f"Cannot add ions with different names: {self.ion.name} and {other.ion.name}")
-        return IonConcentration(self.ion.name, self._value + other._value, self.default_unit)
+        if self._ion.name != other._ion.name:
+            raise ValueError(f"Cannot add ions with different names: {self._ion.name} and {other._ion.name}")
+        return IonConcentration(self._ion.name, self._value + other._value, self.default_unit)
     
     def __sub__(self, other: "IonConcentration") -> "IonConcentration":
-        if self.ion.name != other.ion.name:
-            raise ValueError(f"Cannot subtract ions with different names: {self.ion.name} and {other.ion.name}")
-        return IonConcentration(self.ion.name, self._value - other._value, self.default_unit)
+        if self._ion.name != other._ion.name:
+            raise ValueError(f"Cannot subtract ions with different names: {self._ion.name} and {other._ion.name}")
+        return IonConcentration(self._ion.name, self._value - other._value, self.default_unit)
     
     def __mul__(self, other: float | int) -> "IonConcentration":
-        return IonConcentration(self.ion.name, self._value * other, self.default_unit)
+        return IonConcentration(self._ion.name, self._value * other, self.default_unit)
     
     def __truediv__(self, other: float | int) -> "IonConcentration":
         return IonConcentration(self.ion.name, self._value / other, self.default_unit)
