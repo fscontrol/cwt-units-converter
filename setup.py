@@ -7,7 +7,7 @@ setup(
     name="cwt-units-converter",
     version="0.1.1",
     author="Dmitrii Babaev",
-    author_email="babaevdmitrii@gmail.com",
+    author_email="babaevdmitri@gmail.com",
     description="Water units",
     long_description=long_description,
     long_description_content_type="text/markdown",
