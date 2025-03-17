@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="cwt-units-converter",
-    version="0.1.5",
+    version="0.1.6",
     author="Dmitrii Babaev",
     author_email="babaevdmitri@gmail.com",
     description="Water units",
