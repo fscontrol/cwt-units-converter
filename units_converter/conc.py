@@ -34,7 +34,8 @@ class IonConcentration(Unit):
     _conversion_factors = {
         "caco3": ConverstionFactor(1, 0),
         "ppm": ConverstionFactor(1, 0),
-        "meq": ConverstionFactor(1,0)
+        "meq": ConverstionFactor(1,0),
+        'mmol': ConverstionFactor(1,0),
     }
     def __init__(self, ion: str, value: float, unit: str) -> None:
         self._set_ion(ion)
@@ -45,7 +46,8 @@ class IonConcentration(Unit):
         self._conversion_factors = {
             "caco3": ConverstionFactor(1, 0),
             "ppm": ConverstionFactor(50/self._ion.equivalent_weight, 0),
-            "meq": ConverstionFactor(50, 0)
+            "meq": ConverstionFactor(50, 0),
+            'mmol': ConverstionFactor(50/self._ion.molar_mass, 0),
         }
     def __add__(self, other: "IonConcentration") -> "IonConcentration":
         if self._ion.name != other._ion.name:
