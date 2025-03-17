@@ -9,4 +9,5 @@ from .flow_rate import FlowRateUnit
 from .pressure import PressureUnit
 from .volume import VolumeUnit
 from .humidity import HumidityUnit
+from .area import AreaUnit
 
