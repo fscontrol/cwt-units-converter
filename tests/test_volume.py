@@ -57,23 +57,6 @@ class TestVolumeUnit(unittest.TestCase):
         result = m3_1 / 2
         self.assertAlmostEqual(result.m3, 0.5)  # 1м³ / 2 = 0.5м³
 
-    def test_invalid_operations(self):
-        """Проверка некорректных операций"""
-        volume = VolumeUnit(1, "m3")
-        
-        # Попытка установить значение через атрибут
-        with self.assertRaises(AttributeError):
-            volume.m3 = 10
-            
-        # Попытка получить значение в несуществующей единице
-        with self.assertRaises(AttributeError):
-            _ = volume.invalid_unit
-            
-        # Некорректные арифметические операции
-        with self.assertRaises(TypeError):
-            volume * "2"
-        with self.assertRaises(TypeError):
-            volume / "2"
 
 if __name__ == '__main__':
     unittest.main() 

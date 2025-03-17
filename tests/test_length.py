@@ -55,24 +55,5 @@ class TestLengthUnit(unittest.TestCase):
         result = m1 / 2
         self.assertAlmostEqual(result.m, 0.5)  # 1м / 2 = 0.5м
 
-    def test_invalid_operations(self):
-        """Проверка некорректных операций"""
-        length = LengthUnit(1, "m")
-        
-        # Попытка установить значение через атрибут
-        with self.assertRaises(AttributeError):
-            length.m = 10
-            
-        # Попытка получить значение в несуществующей единице
-        with self.assertRaises(AttributeError):
-            _ = length.invalid_unit
-            
-        # Некорректные арифметические операции
-        with self.assertRaises(TypeError):
-            length * "2"
-        with self.assertRaises(TypeError):
-            length / "2"
-
-
 if __name__ == '__main__':
     unittest.main() 

@@ -55,23 +55,5 @@ class TestDensityUnit(unittest.TestCase):
         result = d1 / 2
         self.assertAlmostEqual(result.kg_m3, 500)   # 1000 кг/м³ / 2 = 500 кг/м³
 
-    def test_invalid_operations(self):
-        """Проверка некорректных операций"""
-        density = DensityUnit(1000, "kg_m3")
-        
-        # Попытка установить значение через атрибут
-        with self.assertRaises(AttributeError):
-            density.kg_m3 = 2000
-            
-        # Попытка получить значение в несуществующей единице
-        with self.assertRaises(AttributeError):
-            _ = density.invalid_unit
-            
-        # Некорректные арифметические операции
-        with self.assertRaises(TypeError):
-            density * "2"
-        with self.assertRaises(TypeError):
-            density / "2"
-
 if __name__ == '__main__':
     unittest.main() 

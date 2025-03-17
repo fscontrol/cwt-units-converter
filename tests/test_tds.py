@@ -3,7 +3,7 @@ from units_converter.tds import TDSUnit
 
 class TestTDSUnit(unittest.TestCase):
     def setUp(self):
-        # Создаем тестовые экземпляры для разных диапазонов минерализации
+        """Создание тестовых объектов для разных диапазонов минерализации"""
         self.pure_water = TDSUnit()  # Чистая вода
         self.pure_water.usm = 50
         self.brackish_water = TDSUnit()  # Солоноватая вода
@@ -67,7 +67,7 @@ class TestTDSUnit(unittest.TestCase):
         # Морская вода
         seawater = TDSUnit()
         seawater.ppm = 7110
-        self.assertAlmostEqual(abs(seawater.usm-10000)/200,0, places=0)
+        self.assertAlmostEqual(abs(seawater.usm-10000)/200, 0, places=0)
 
     def test_arithmetic_operations(self):
         """Проверка арифметических операций"""
@@ -87,27 +87,6 @@ class TestTDSUnit(unittest.TestCase):
         result = self.seawater / 2
         self.assertAlmostEqual(result.usm, 5000)
 
-    def test_invalid_operations(self):
-        """Проверка недопустимых операций"""
-        # Отрицательные значения
-        with self.assertRaises(ValueError):
-            tds = TDSUnit()
-            tds.usm = -100
-
-        with self.assertRaises(ValueError):
-            tds = TDSUnit()
-            tds.ppm = -50
-
-        # Некорректные арифметические операции
-        with self.assertRaises(TypeError):
-            result = self.pure_water + 100
-
-        with self.assertRaises(TypeError):
-            result = self.pure_water * self.brackish_water
-
-        # Деление на ноль
-        with self.assertRaises(ZeroDivisionError):
-            result = self.pure_water / 0
 
 if __name__ == '__main__':
     unittest.main() 

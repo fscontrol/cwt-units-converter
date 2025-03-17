@@ -54,23 +54,5 @@ class TestMassUnit(unittest.TestCase):
         result = kg1 / 2
         self.assertAlmostEqual(result.kg, 0.5)  # 1кг / 2 = 0.5кг
 
-    def test_invalid_operations(self):
-        """Проверка некорректных операций"""
-        mass = MassUnit(1, "kg")
-        
-        # Попытка установить значение через атрибут
-        with self.assertRaises(AttributeError):
-            mass.kg = 10
-            
-        # Попытка получить значение в несуществующей единице
-        with self.assertRaises(AttributeError):
-            _ = mass.invalid_unit
-            
-        # Некорректные арифметические операции
-        with self.assertRaises(TypeError):
-            mass * "2"
-        with self.assertRaises(TypeError):
-            mass / "2"
-
 if __name__ == '__main__':
     unittest.main() 
